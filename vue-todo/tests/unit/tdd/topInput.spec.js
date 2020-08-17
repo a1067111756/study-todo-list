@@ -1,0 +1,43 @@
+/* todo-list 输入框tdd测试 */
+import { shallowMount } from '@vue/test-utils'
+import TopInput from '@/components/NoteBook/components/TopInput.vue'
+
+describe('TopInput组件TDD测试', () => {
+
+  // TopInput包含input框
+  it('TopInput 包含 input输入框', () => {
+    // 挂载组件
+    const wrapper = shallowMount(TopInput)
+    // 查找input标签
+    const input = wrapper.find('input')
+    // 期望input存在
+    expect(input.exists()).toBe(true)
+  })
+
+  // TopInput输入框初始值为undefined
+  it('TopInput 中 input输入框初始值为undefined', () => {
+    // 挂载组件
+    const wrapper = shallowMount(TopInput)
+    // 查找input标签
+    const inputValue = wrapper.vm.$data.inputValue
+    // 期望input存在
+    expect(inputValue).toBeUndefined()
+  })
+
+  // TopInput输入框为无内容时，回车不触发事件
+  it('TopInput 中 input输入框为无内容时，回车不触发事件', () => {
+    // 挂载组件
+    const wrapper = shallowMount(TopInput)
+    // 查找input标签
+    const input = wrapper.find('input')
+    input.setValue('')
+    // 期望input存在
+    expect(inputValue).toBeUndefined()
+  })
+})
+
+
+
+// TopInput输入框为有内容时，回车触发事件
+
+// TopInput输入框为有内容时，回车触发事件，同时清空输入框内容

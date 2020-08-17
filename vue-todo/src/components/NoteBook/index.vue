@@ -27,7 +27,8 @@
 <script>
 import NoteList from './components/NoteList'
 import BottomTool from './components/BottomTool'
-import { ENUM_STORAGE, setStorage, getStorage } from '@/utils/storage'
+import { ENUM_STORAGE, ENUM_NOTE_BOOK_STATUS } from './enum'
+import { setStorage, getStorage } from '@/utils/storage'
 
 export default {
   components: {
@@ -37,7 +38,7 @@ export default {
   data () {
     return {
       input: undefined,
-      currentStatus: 'all',
+      currentStatus: ENUM_NOTE_BOOK_STATUS.ALL,
       noteList: getStorage(ENUM_STORAGE.NOTE_MESSAGE) ?? []
     }
   },
@@ -46,7 +47,7 @@ export default {
     onBookInput () {
       if (this.input === '') return
 
-      this.noteList.push({ status: 'active', message: this.input })
+      this.noteList.push({ status: ENUM_NOTE_BOOK_STATUS.ACTIVE, message: this.input })
       this.input = undefined
       setStorage(ENUM_STORAGE.NOTE_MESSAGE, this.noteList)
     },
@@ -57,29 +58,29 @@ export default {
     },
     // 事件 - note-book全部事件
     onBookAll () {
-      this.currentStatus = 'all'
+      this.currentStatus = ENUM_NOTE_BOOK_STATUS.ALL
       this.noteList = getStorage(ENUM_STORAGE.NOTE_MESSAGE) ?? []
     },
     // 事件 - note-book进行中事件
     onBookActive () {
-      this.currentStatus = 'active'
+      this.currentStatus = ENUM_NOTE_BOOK_STATUS.ACTIVE
       const match = getStorage(ENUM_STORAGE.NOTE_MESSAGE) ?? []
-      this.noteList = match.filter(item => item.status === 'active')
+      this.noteList = match.filter(item => item.status === ENUM_NOTE_BOOK_STATUS.ACTIVE)
     },
     // 事件 - note-book完成事件
     onBookCompleted () {
-      this.currentStatus = 'completed'
+      this.currentStatus = ENUM_NOTE_BOOK_STATUS.COMPLETED
       const match = getStorage(ENUM_STORAGE.NOTE_MESSAGE) ?? []
-      this.noteList = match.filter(item => item.status === 'completed')
+      this.noteList = match.filter(item => item.status === ENUM_NOTE_BOOK_STATUS.COMPLETED)
     },
     // 事件 - note-book清除完成事件
     onBookClearCompleted () {
-      this.noteList = this.noteList.filter(item => item.status !== 'completed')
+      this.noteList = this.noteList.filter(item => item.status !== ENUM_NOTE_BOOK_STATUS.COMPLETED)
       setStorage(ENUM_STORAGE.NOTE_MESSAGE, this.noteList)
     },
     // 事件 - note-book-item完成事件
     onBookItemCompleted (index) {
-      this.noteList[index].status = 'completed'
+      this.noteList[index].status = ENUM_NOTE_BOOK_STATUS.COMPLETED
       setStorage(ENUM_STORAGE.NOTE_MESSAGE, this.noteList)
     }
   }

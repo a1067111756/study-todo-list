@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { ENUM_NOTE_BOOK_STATUS } from '../enum'
+
 export default {
   props: {
     value: {
@@ -28,7 +30,7 @@ export default {
   },
   computed: {
     getLeftItem (value) {
-      return value => value.filter(item => item.status === 'active').length
+      return value => value.filter(item => item.status === ENUM_NOTE_BOOK_STATUS.ACTIVE).length
     }
   }
 }
