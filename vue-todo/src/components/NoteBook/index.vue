@@ -1,11 +1,6 @@
 <template>
   <div class="note-book-wrapper">
-    <input
-      v-model.trim="input"
-      type="text"
-      placeholder="接下来要做什么呐？"
-      @keyup.enter="onBookInput"
-    />
+    <top-input @book-input="onBookInput" />
 
     <NoteList
       :value="noteList"
@@ -25,6 +20,7 @@
 </template>
 
 <script>
+import TopInput from './components/TopInput'
 import NoteList from './components/NoteList'
 import BottomTool from './components/BottomTool'
 import { ENUM_STORAGE, ENUM_NOTE_BOOK_STATUS } from './enum'
@@ -32,6 +28,7 @@ import { setStorage, getStorage } from '@/utils/storage'
 
 export default {
   components: {
+    TopInput,
     NoteList,
     BottomTool
   },
@@ -44,11 +41,8 @@ export default {
   },
   methods: {
     // 事件 - 输入框输入
-    onBookInput () {
-      if (this.input === '') return
-
-      this.noteList.push({ status: ENUM_NOTE_BOOK_STATUS.ACTIVE, message: this.input })
-      this.input = undefined
+    onBookInput (val) {
+      this.noteList.push({ status: ENUM_NOTE_BOOK_STATUS.ACTIVE, message: val })
       setStorage(ENUM_STORAGE.NOTE_MESSAGE, this.noteList)
     },
     // 事件 - 条目关闭
@@ -93,15 +87,5 @@ export default {
     background-color: #FFF;
     box-shadow: rgb(102, 102, 102) 0px 0px 5px;
     z-index: 10;
-
-    & > input {
-      width: 100%;
-      height: 60px;
-      outline: none;
-      border: none;
-      font-size: 24px;
-      font-weight: 300;
-      padding-left: 60px;
-    }
   }
 </style>
