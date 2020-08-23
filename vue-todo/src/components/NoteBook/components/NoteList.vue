@@ -2,7 +2,7 @@
   <div class="note-list">
     <div class="note-list-item" v-for="(item, index) in value" :key="index">
       <!-- 消息状态图标 -->
-      <svg class="icon" aria-hidden="true" :style="{ 'color': getStatusColor(item.status) }" @click="$emit('book-item-completed-click', index)">
+      <svg class="icon" aria-hidden="true" :style="{ 'color': getStatusColor(item.status) }" @click="$emit('book-item-completed-click', item.id)">
         <use xlink:href="#icon-queding"></use>
       </svg>
 
@@ -10,7 +10,7 @@
       <p class="message">{{ item.message }}</p>
 
       <!-- 消息删除图标 -->
-      <svg class="icon close" aria-hidden="true" style="color: #F56C6C" @click="$emit('book-item-close-click', index)">
+      <svg class="icon close" aria-hidden="true" style="color: #F56C6C" @click="$emit('book-item-close-click', item.id)">
         <use xlink:href="#icon-quxiao"></use>
       </svg>
     </div>

@@ -41,13 +41,13 @@ export default {
   },
   methods: {
     // 事件 - 输入框输入
-    onBookInput (val) {
-      this.noteList.push({ status: ENUM_NOTE_BOOK_STATUS.ACTIVE, message: val })
+    onBookInput (val, id = this.noteList.length, status = ENUM_NOTE_BOOK_STATUS.ACTIVE) {
+      this.noteList.push({ id, status, message: val })
       setStorage(ENUM_STORAGE.NOTE_MESSAGE, this.noteList)
     },
     // 事件 - 条目关闭
-    onBookItemClose (index) {
-      this.noteList.splice(index, 1)
+    onBookItemClose (id) {
+      this.noteList = this.noteList.filter(item => item.id !== id)
       setStorage(ENUM_STORAGE.NOTE_MESSAGE, this.noteList)
     },
     // 事件 - note-book全部事件
@@ -73,8 +73,8 @@ export default {
       setStorage(ENUM_STORAGE.NOTE_MESSAGE, this.noteList)
     },
     // 事件 - note-book-item完成事件
-    onBookItemCompleted (index) {
-      this.noteList[index].status = ENUM_NOTE_BOOK_STATUS.COMPLETED
+    onBookItemCompleted (id) {
+      this.noteList.find(item => item.id === id).status = ENUM_NOTE_BOOK_STATUS.COMPLETED
       setStorage(ENUM_STORAGE.NOTE_MESSAGE, this.noteList)
     }
   }
