@@ -1,17 +1,13 @@
+import './index.css'
 import React from 'react'
 
 class TopInput extends React.Component {
   constructor (props) {
     super(props)
 
-    // 初始props
-    const {
-      bookInput
-    } = this.props
-
     // 初始state
     this.state = {
-      inputValue: undefined
+      inputValue: ''
     }
 
     // 绑定作用域
@@ -22,7 +18,14 @@ class TopInput extends React.Component {
   render () {
     return (
       <React.Fragment>
-        <input value={ this.state.inputValue } type="text" placeholder="接下来要做什么呐？" onKeyDown="handleInputEnter" onChange="handleInputChange"></input>
+        <input 
+          type="text"
+          className="top-input-box"
+          placeholder="接下来要做什么呐？"
+          value={ this.state.inputValue } 
+          onKeyDown={ this.handleInputEnter } 
+          onChange={ this.handleInputChange } 
+        />
       </React.Fragment>
     )
   }
@@ -30,9 +33,9 @@ class TopInput extends React.Component {
   // 事件 - 输入框内容回车
   handleInputEnter (e) {
     if (e.keyCode !== 13) return
-    if (this.state.inputValue || this.state.inputValue === '') return
-    this.bookInput(this.state.inputValue)
-    this.setState({ inputValue: undefined })
+    if (!this.state.inputValue || this.state.inputValue === '') return
+    this.props.bookInput(this.state.inputValue)
+    this.setState({ inputValue: '' })
   }
 
   // 事件 - 输入框内容变化

@@ -1,0 +1,6 @@
+.note-book-wrapper {
+  width: 600px;
+  background-color: #FFF;
+  box-shadow: rgb(102, 102, 102) 0px 0px 5px;
+  z-index: 10;
+}

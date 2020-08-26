@@ -1,0 +1,44 @@
+.note-list {
+  max-height: 486px;
+  overflow-y: auto;
+}
+.note-list::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width : 2px;  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+}
+.note-list::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 1px;
+  background   : #ededed;
+}
+.note-list::-webkit-scrollbar-track {
+  background   : #ededed;
+}
+
+.note-list-item {
+  display: grid;
+  align-items: center;
+  grid-column-gap: 20px;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 'left center right';
+  font-size: 20px;
+  padding: 15px 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.note-list-item:hover .close {
+  opacity: 1;
+}
+.note-list-item .message {
+  text-align: left;
+}
+.note-list-item .close {
+  opacity: 0;
+  transition: all 1s linear;
+  color: rgb(245, 108, 108);
+}
+
+.note-list-item .iconfont {
+  font-size: 24px;
+}

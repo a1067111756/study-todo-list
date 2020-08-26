@@ -1,7 +1,7 @@
 import './index.css';
-import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import TodoList from './views/todo-list/index';
+import './assets/iconfont/iconfont.css'
 
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<TodoList />, document.getElementById('root'));
