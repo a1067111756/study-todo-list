@@ -1,0 +1,29 @@
+.bottom-tool-wrapper {
+  cursor: pointer;
+  font-size: 14px;
+  padding: 15px 20px;
+  color: rgb(77, 77, 77);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  display: grid;
+  grid-template-columns: 100px 200px 100px;
+  grid-template-areas: 'left center right';
+  justify-content: space-between;
+}
+
+.bottom-tool-wrapper .section1 {
+  text-align: left;
+}
+
+.bottom-tool-wrapper .section2 {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.bottom-tool-wrapper .section2 .active {
+  color: #67C23A;
+}
+
+.bottom-tool-wrapper .section3 {
+  text-align: right;
+}

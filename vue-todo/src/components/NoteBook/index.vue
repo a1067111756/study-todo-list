@@ -42,7 +42,7 @@ export default {
   methods: {
     // 事件 - 输入框输入
     onBookInput (val, id = this.noteList.length, status = ENUM_NOTE_BOOK_STATUS.ACTIVE) {
-      this.noteList.push({ id, status, message: val })
+      this.noteList.unshift({ id, status, message: val })
       setStorage(ENUM_STORAGE.NOTE_MESSAGE, this.noteList)
     },
     // 事件 - 条目关闭

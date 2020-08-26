@@ -38,7 +38,9 @@
   transition: all 1s linear;
   color: rgb(245, 108, 108);
 }
-
+.note-list-item .active {
+  color: #67C23A;
+}
 .note-list-item .iconfont {
   font-size: 24px;
 }

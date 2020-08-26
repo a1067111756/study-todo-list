@@ -8,12 +8,20 @@ class NoteList extends React.Component {
   }
 
   render () {
-    console.log(this.props.value)
     const noteListItem = this.props.value.map(item => (
       <div className="note-list-item" key={item.id}>
-        <span className="iconfont icon-queding"></span>
-        <p className="message">{item.message}</p>
-        <span className="iconfont icon-quxiao close"></span>
+        {/* 状态图标 */}
+        <svg className={`icon ${ item.status }`} aria-hidden="true" onClick={() => this.props.bookItemCompleted(item.id)}>
+          <use xlinkHref="#icon-queding"></use>
+        </svg>
+
+        {/* 消息 */}
+        <p className="message">{ item.message }</p>
+        
+        {/* 删除图标 */}
+        <svg className="icon close" aria-hidden="true" onClick={() => this.props.bookItemClose(item.id)}>
+          <use xlinkHref="#icon-quxiao"></use>
+        </svg>        
       </div>
     ))
 
