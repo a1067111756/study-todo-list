@@ -5,9 +5,9 @@
 
     <!-- 中间 -->
     <section class="section2">
-      <span :class="{ 'active': status === 'all' }" @click="$emit('book-all-click')">all</span>
-      <span :class="{ 'active': status === 'active' }" @click="$emit('book-active-click')">active</span>
-      <span :class="{ 'active': status === 'completed' }" @click="$emit('book-completed-click')">completed</span>
+      <span class="all-but" :class="{ 'active': status === 'all' }" @click="$emit('book-all-click')">all</span>
+      <span class="active-but" :class="{ 'active': status === 'active' }" @click="$emit('book-active-click')">active</span>
+      <span class="completed-but" :class="{ 'active': status === 'completed' }" @click="$emit('book-completed-click')">completed</span>
     </section>
 
     <!-- 右边 -->

@@ -1,11 +1,11 @@
-/* todo-list 输入框tdd测试 */
+/* todo-list > input输入框 tdd测试 */
 import { shallowMount } from '@vue/test-utils'
 import TopInput from '@/components/NoteBook/components/TopInput.vue'
 
 describe('TopInput组件TDD测试', () => {
 
-  // TopInput包含input框
-  it('TopInput 包含 input输入框', () => {
+  // 包含一个input输入框
+  it('包含一个input输入框', () => {
     // 挂载组件
     const wrapper = shallowMount(TopInput)
     // 查找input标签
@@ -14,8 +14,8 @@ describe('TopInput组件TDD测试', () => {
     expect(input.exists()).toBe(true)
   })
 
-  // TopInput输入框初始值为undefined
-  it('TopInput 中 input输入框初始值为undefined', () => {
+  // input输入框初始值为undefined
+  it('input输入框初始值为undefined', () => {
     // 挂载组件
     const wrapper = shallowMount(TopInput)
     // 查找input标签
@@ -24,8 +24,8 @@ describe('TopInput组件TDD测试', () => {
     expect(inputValue).toBeUndefined()
   })
 
-  // TopInput输入框发生变化，数据应该跟随变化
-  it('TopInput 中 input输入框发生变化，数据应该跟随变化', () => {
+  // input输入框发生变化，数据应该跟随变化
+  it('input输入框发生变化，数据应该跟随变化', () => {
     // 挂载组件
     const wrapper = shallowMount(TopInput)
     // 查找input标签并设置值变化
@@ -36,8 +36,8 @@ describe('TopInput组件TDD测试', () => {
     expect(inputValue).toBe('this is test data')
   })
 
-  // TopInput输入框为无内容时，回车不触发事件
-  it('TopInput 中 input输入框为无内容时，回车不触发事件', () => {
+  // input输入框为无内容时，回车不触发book-input事件
+  it('input输入框为无内容时，回车不触发book-input事件', () => {
     // 挂载组件
     const wrapper = shallowMount(TopInput)
     // 设置input输入框值为空字符串
@@ -49,8 +49,8 @@ describe('TopInput组件TDD测试', () => {
     expect(wrapper.emitted()['book-input']).toBeFalsy()
   })
 
-  // TopInput输入框为有内容时，回车触发事件，同时清空输入框内容
-  it('TopInput 中 输入框为有内容时，回车触发事件，同时清空输入框内容', () => {
+  // input输入框有内容时，回车触发book-input事件，同时清空输入框内容
+  it('input输入框有内容时，回车触发book-input事件，同时清空输入框内容', () => {
     // 挂载组件
     const wrapper = shallowMount(TopInput)
     // 设置input输入框值为空字符串
