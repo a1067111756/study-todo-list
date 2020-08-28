@@ -1,7 +1,7 @@
 <template>
   <div class="bottom-tool-wrapper">
     <!-- 左边 -->
-    <p class="section1">{{ getLeftItem(value)  }} item left</p>
+    <p class="left-counter" :data-counter="getLeftItem(value)">{{ getLeftItem(value)  }} item left</p>
 
     <!-- 中间 -->
     <section class="section2">

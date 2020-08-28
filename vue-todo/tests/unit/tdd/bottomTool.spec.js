@@ -16,7 +16,7 @@ describe('BottomTool组件TDD测试', () => {
       }
     })
     
-    const counter = wrapper.find('.section1')
+    const counter = wrapper.find('.left-counter')
     expect(counter.text()).toContain('2')
   })
 

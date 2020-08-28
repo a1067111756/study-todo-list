@@ -12,6 +12,15 @@ module.exports = {
     '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
     '^.+\\.jsx?$': 'babel-jest'
   },
+  // 测试覆盖率文件配置
+  collectCoverageFrom: [
+    'src/**/*.{js,vue}',
+    '!src/assets/**',
+    '!src/store/**',
+    '!src/main.js',
+    '!src/router/**',
+    '!**/node_modules/**'
+  ],
   // 转换忽略
   transformIgnorePatterns: [
     '/node_modules/'
