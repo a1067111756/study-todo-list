@@ -105,10 +105,113 @@ describe('noteBook组件集成测试', () => {
   })
 
   // 点击显示全部事件按钮
+  it(`
+    1. 点击bottom-tool工具栏的显示全部事件按钮
+    2. note-list列表项消息显示全部事件
+  `, async () => {
+    // 挂在组件 
+    const wrapper = mount(NoteBook, {
+      data() {
+        return {
+          noteList: [
+            { id: 0, message: '测试数据一', status: 'active' },
+            { id: 1, message: '测试数据二', status: 'active' },
+            { id: 2, message: '测试数据三', status: 'active' }
+          ]
+        }
+      }
+    })
+
+    // 点击bottom-tool工具栏的显示全部事件按钮
+    const allBut = wrapper.find('.all-but')
+    await allBut.trigger('click')
+
+    // note-list列表项消息显示全部事件
+    const noteListItems = wrapper.findAll('.note-list-item')
+    expect(noteListItems.length).toEqual(3)
+  })  
 
   // 点击显示未完成事件按钮
+  it(`
+    1. 点击bottom-tool工具栏的显示未完成事件按钮
+    2. note-list列表项消息显示未完成事件
+  `, async () => {
+    // 挂在组件 
+    const wrapper = mount(NoteBook, {
+      data() {
+        return {
+          noteList: [
+            { id: 0, message: '测试数据一', status: 'active' },
+            { id: 1, message: '测试数据二', status: 'active' },
+            { id: 2, message: '测试数据三', status: 'completed' }
+          ]
+        }
+      }
+    })
+
+    // 点击bottom-tool工具栏的显示全部事件按钮
+    const completedBut = wrapper.find('.completed-but')
+    await completedBut.trigger('click')
+
+    // note-list列表项消息显示未完成事件
+    const noteListItems = wrapper.findAll('.note-list-item')
+    expect(noteListItems.length).toEqual(1)
+    expect(noteListItems.at(0).find('.status').attributes('data-status')).toEqual('completed')
+    wrapper.destroy()
+  })  
 
   // 点击显示完成事件按钮
+  it(`
+    1. 点击bottom-tool工具栏的显示完成事件按钮
+    2. note-list列表项消息显示完成事件
+  `, async () => {
+    // 挂在组件 
+    const wrapper1 = mount(NoteBook, {
+      data () {
+        return {
+          noteList: [
+            { id: 0, message: '测试数据一', status: 'active' },
+            { id: 1, message: '测试数据二', status: 'active' },
+            { id: 2, message: '测试数据三', status: 'completed' }
+          ]
+        }
+      }
+    })
+    // 点击bottom-tool工具栏的显示全部事件按钮
+    const activeBut = wrapper1.find('.active-but')
+    await activeBut.trigger('click')
+
+    // note-list列表项消息显示未完成事件
+    const noteListItems = wrapper1.findAll('.note-list-item')
+    expect(noteListItems.length).toEqual(2)
+    expect(noteListItems.at(0).find('.status').attributes('data-status')).toEqual('active')
+  })  
 
   // 点击清除未完成事件按钮
+  it(`
+    1. 点击bottom-tool工具栏的清除未完成事件按钮
+    2. note-list列表项消息只剩完成事件
+  `, async () => {
+    // 挂在组件 
+    const wrapper1 = mount(NoteBook, {
+      data () {
+        return {
+          noteList: [
+            { id: 0, message: '测试数据一', status: 'active' },
+            { id: 1, message: '测试数据二', status: 'active' },
+            { id: 2, message: '测试数据三', status: 'completed' }
+          ]
+        }
+      }
+    })
+    // 点击bottom-tool工具栏的清除未完成事件按钮
+    const clearCompletedBut = wrapper1.find('.clear-completed-but')
+    await clearCompletedBut.trigger('click')
+
+    // note-list列表项消息只剩完成事件
+    const noteListItems = wrapper1.findAll('.note-list-item')
+    expect(noteListItems.length).toEqual(2)
+    expect(noteListItems.at(0).find('.status').attributes('data-status')).toEqual('active')
+  })  
+
 })

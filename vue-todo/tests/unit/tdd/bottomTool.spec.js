@@ -34,7 +34,7 @@ describe('BottomTool组件TDD测试', () => {
     })
     
     // 触发一键清除
-    const clearButton = wrapper.find('.section3')
+    const clearButton = wrapper.find('.clear-completed-but')
     clearButton.trigger('click')
 
     // 验证抛出book-clear-completed-click事件

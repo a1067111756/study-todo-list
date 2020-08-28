@@ -11,7 +11,7 @@
     </section>
 
     <!-- 右边 -->
-    <p class="section3" @click="$emit('book-clear-completed-click')">clear completed</p>
+    <p class="clear-completed-but" @click="$emit('book-clear-completed-click')">clear completed</p>
   </div>
 </template>
 
