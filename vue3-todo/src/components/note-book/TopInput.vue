@@ -8,8 +8,15 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, toRefs } from 'vue'
+import { ENUM_NOTE_BOOK_STATUS }  from './enum.js'
 export default {
+  props: {
+    value: {
+      type: Array,
+      required: true
+    }
+  },
   setup (props, context) {
     // 输入框绑定
     const inputValue = ref(undefined)
@@ -19,6 +26,7 @@ export default {
       if (!inputValue.value || inputValue.value === '') {
         return
       }
+      props.value.unshift({ text: inputValue.value, status: ENUM_NOTE_BOOK_STATUS.ACTIVE })
       context.emit('input-ok', inputValue.value)
       inputValue.value = undefined
     }
