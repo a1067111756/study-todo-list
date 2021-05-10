@@ -11,7 +11,7 @@
     </section>
 
     <!-- 右边 -->
-    <p class="clear-completed-but but-hover" @click="$emit('update:value', [])">clear completed</p>
+    <p class="clear-completed-but but-hover" @click="onRemoveAllItem">clear completed</p>
   </div>
 </template>
 
@@ -44,7 +44,7 @@ export default {
 
     // 事件 - 移除所有事项
     const onRemoveAllItem = () => {
-      context.emit('update:value', reactive([]))
+      context.emit('update:value', props.value.filter(item => item.status === ENUM_STATUS.ACTIVE))
     }
 
     return { ENUM_STATUS, remainValueCmp, onRemoveAllItem }

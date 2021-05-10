@@ -12,9 +12,7 @@
 import NoteBook from '../components/note-book/index.vue'
 
 export default {
-  components: { NoteBook },
-  setup (props, context) {
-  }
+  components: { NoteBook }
 }
 </script>
 

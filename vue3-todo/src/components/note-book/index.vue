@@ -1,7 +1,5 @@
 <template>
   <div class="components-note-book__container">
-    <p>{{ data }}</p>
-
     <!-- 顶部输入框 -->
     <TopInput v-model:value="data"></TopInput>
     
@@ -23,14 +21,10 @@ import { ENUM_NOTE_BOOK_STATUS }  from './enum.js'
 export default {
   components: { TopInput, NoteList, BottomTool },
   setup (props, context) {
+    const data = ref([])
     const status = ref(ENUM_NOTE_BOOK_STATUS.ALL)
 
-    const data = reactive([
-      { text: '测试数据', status: 'active' },
-      { text: '测试数据1', status: 'completed' }
-    ])
-
-    return { data, status,  }
+    return { data, status }
   }
 }
 </script>

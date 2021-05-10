@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { computed, toRef } from 'vue'
+import { computed, toRef, reactive } from 'vue'
   import { ENUM_NOTE_BOOK_STATUS }  from './enum.js'
 
   export default {
